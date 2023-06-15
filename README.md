@@ -29,7 +29,7 @@ Cкрипт генерирует оптимизированную сборку �
 
 **Макет лендинга**
 
-* [Ссылка на макет](https://www.figma.com/file/9TAtp76DXWBVThbTCvDZLc/Diploma-(Copy)?type=design&node-id=932-4503&t=iAAMzDeWaYu50yNi-0)
+* [Ссылка на макет](https://disk.yandex.ru/d/4IuXN7O8W558KA)
 
 
 
