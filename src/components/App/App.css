@@ -1,0 +1,77 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #202020;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  position: relative;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding-inline: 70px;
+}
+
+.section-caption {
+  margin: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 23px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.13;
+  letter-spacing: -0.04em;
+}
+
+.section-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.section-subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+.section-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.42;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-inline: 50px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .container {
+    padding-inline: 15px;
+  }
+
+  .section-caption {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+  }
+}

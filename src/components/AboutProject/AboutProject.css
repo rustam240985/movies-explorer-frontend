@@ -1,0 +1,167 @@
+.about-project {
+  padding-bottom: 110px;
+}
+
+.about-project__caption {
+  margin-top: 110px;
+}
+
+.about-project__stages {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.about-project__stage {
+  flex: 1 0;
+}
+
+.about-project__periods {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-project__period:first-child {
+  flex: 0 1 20%;
+}
+
+.about-project__period:last-child {
+  flex: 0 1 80%;
+}
+
+.about-project__heading {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.21;
+  letter-spacing: -0.04em;
+  margin-top: 70px;
+}
+
+.about-project__text {
+  margin-top: 26px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.about-project__period-heading {
+  margin-top: 110px;
+  font-size: 14px;
+  text-align: center;
+  padding: 9px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.about-project__period-heading_bg_green {
+  background: #3DDC84;
+  color: #000;
+}
+
+.about-project__period-heading_bg_grey {
+  background: #303030;
+}
+
+.about-project__period-text {
+  font-family: 'SuisseIntl', Arial, sans-serif;
+  margin-top: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: #8B8B8B
+}
+
+.about-project__period-text {
+  margin-top: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: #8B8B8B
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__period-heading {
+    margin-top: 93px;
+  }
+
+  .about-project {
+    padding-bottom: 91px;
+  }
+
+  .about-project__caption {
+    margin-top: 91px;
+  }
+
+  .about-project__text {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 22px;
+  }
+
+  .about-project__period-text {
+    font-size: 14px;
+    line-height: 1.21;
+    margin-top: 22px;
+    margin-top: 14px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .about-project {
+    padding-bottom: 70px;
+  }
+
+  .about-project__stages {
+    gap: 0;
+  }
+
+  .about-project__caption {
+    margin-top: 70px;
+  }
+
+  .about-project__stage {
+    flex-basis: 100%;
+  }
+
+  .about-project__heading {
+    margin-top: 60px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  .about-project__text {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.45;
+    margin-top: 16px;
+  }
+
+  .about-project__period-heading {
+    margin-top: 60px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__period-text {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__period:first-child {
+    flex: 1 0 35%;
+  }
+
+}
