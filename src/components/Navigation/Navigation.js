@@ -43,11 +43,11 @@ function Navigation() {
 
         </nav>
         <button className={`toggle-sidebar ${isActiveSidebar ? 'toggle-sidebar_active' : ''} `} onClick={handleClickBurger}>
-          <div className="toggle-sidebar__btn">
+          
             <span className={`toggle-sidebar__btn-line line-top ${isActiveSidebar ? 'line-top_active' : ''}`} />
             <span className={`toggle-sidebar__btn-line line-middle  ${isActiveSidebar ? 'line-middle_active' : ''}`} />
             <span className={`toggle-sidebar__btn-line line-bottom  ${isActiveSidebar ? 'line-bottom_active' : ''}`} />
-          </div>
+          
         </button>
       </>,
     },

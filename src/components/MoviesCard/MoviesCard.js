@@ -7,7 +7,7 @@ function MoviesCard({ movie, isSave }) {
     <article className="card">
       <div className="card__text">
         <div className="card__info">
-          <p className="card__title">{movie.name}</p>
+          <h2 className="card__title">{movie.name}</h2>
           <span className="card__time">{movie.time}</span>
         </div>
         <button className={isSave ? 'card__del' : 'card__save'} type="button"></button>

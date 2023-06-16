@@ -6,7 +6,7 @@
   gap: 40px;
 }
 
-.card-list__more-btn {
+.more-btn {
   all: unset;
   cursor: pointer;
   display: block;
@@ -27,7 +27,7 @@
     gap: 20px;
   }
 
-  .card-list__more-btn {
+  .more-btn {
     width: 240px;
     padding: 11px 0 9px;
     margin-top: 10px;

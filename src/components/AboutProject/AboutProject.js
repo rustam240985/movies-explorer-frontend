@@ -5,9 +5,9 @@ function AboutProject() {
 
   return (
     <section className="about-project container" id="project">
-      <p className="section-caption about-project__caption">
+      <h2 className="section-caption about-project__caption">
         О проекте
-      </p>
+      </h2>
       <ul className="about-project__stages">
         <li className="about-project__stage">
           <p className="about-project__heading">

@@ -13,8 +13,8 @@
   margin-top: 66px;
   width: 270px;
   height: 327px;
-  border-radius: 10px;
-  background: url('../../images/face.jpg') 0 0/contain no-repeat;
+  border-radius: 13px;
+  background: url('../../images/face.png') center/cover no-repeat;
 }
 
 .about-me__column:nth-child(1) {

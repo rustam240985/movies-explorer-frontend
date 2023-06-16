@@ -5,9 +5,9 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 function SearchForm() {
 
   return (
-    <section className="search">
+    <section className="search" aria-label="Поиск фильма">
       <form className="search__form">
-        <input className="search__input" type="text" placeholder="Фильм" />
+        <input className="search__input" type="text" placeholder="Фильм" required />
         <button className="search__btn" type="submit">Поиск</button>
       </form>
       <FilterCheckbox />

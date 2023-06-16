@@ -5,16 +5,16 @@ function MoviesCardList({ cards, isSave }) {
 
 
   return (
-    <div className="card-list">
-      <section className="cards">
+    <>
+      <section className="cards" aria-label="Список фильмов">
         {cards?.map((card) => (
           <MoviesCard key={card.id} movie={card} isSave={isSave} />
         ))}
       </section>
       {cards.length > 3 &&
-        <button className="card-list__more-btn" type="button">Ещё</button>
+        <button className="more-btn" type="button">Ещё</button>
       }
-    </div>
+    </>
   )
 }
 
