@@ -12,7 +12,7 @@ function MoviesCardList({ cards, isSave }) {
         ))}
       </section>
       {cards.length > 3 &&
-        <button className="more-btn" type="button">Ещё</button>
+        <button className="more-btn more-btn_align" type="button">Ещё</button>
       }
     </>
   )

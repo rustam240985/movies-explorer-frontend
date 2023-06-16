@@ -10,15 +10,19 @@
   all: unset;
   cursor: pointer;
   display: block;
-  margin: 0 auto;
+  box-sizing: border-box;
   padding: 11px 147px;
-  margin-bottom: 80px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
   text-align: center;
   border: 1px solid #424242;
   border-radius: 5px;
+}
+
+.more-btn_align {
+  margin-inline: auto;
+  margin-bottom: 80px;
 }
 
 @media screen and (max-width: 460px) {
@@ -29,6 +33,9 @@
 
   .more-btn {
     width: 240px;
+  }
+
+  .more-btn_align {
     padding: 11px 0 9px;
     margin-top: 10px;
   }
