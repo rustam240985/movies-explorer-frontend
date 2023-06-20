@@ -1,0 +1,239 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav__link {
+  all: unset;
+  color: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: right;
+  cursor: pointer;
+  transition: opacity .3s ease-in;
+}
+
+.nav__link:hover {
+  opacity: 0.6;
+}
+
+.nav__link_color_green {
+  background: #3DDC84;
+  border-radius: 3px;
+  padding: 8px 20px;
+  color: #000;
+}
+
+.movies-nav {
+  gap: 16px;
+  flex-grow: 0.5;
+  margin-left: auto;
+  padding-left: 88px;
+}
+
+.movies-nav__link {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38;
+}
+
+.profile-link {
+  all: unset;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  padding: 8px 20px;
+  background: #313131;
+  border-radius: 20px;
+  transition: opacity .2s ease-in-out;
+  margin-left: auto;
+}
+
+.profile-link:hover {
+  opacity: 0.6;
+}
+
+.toggle-sidebar {
+  display: none;
+  margin-right: 6px;
+  box-sizing: border-box;
+  width: 28px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: opacity .6s ease-in;
+}
+
+.toggle-sidebar:hover {
+  opacity: 0.6;
+}
+
+.toggle-sidebar_active {
+  position: fixed;
+  z-index: 11;
+  top: 26px;
+  right: 26px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+}
+
+.line-bottom {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: top 0.2s linear 0.2s;
+  transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+  transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.line-bottom_active {
+  transform: rotate(-45deg);
+  top: 10px;
+  transition: top 0.2s linear;
+  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+}
+
+.line-middle {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+}
+
+.line-middle_active {
+  background-color: transparent;
+}
+
+.line-top {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: top 0.2s linear 0.2s;
+  transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+  transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.line-top_active {
+  transform: rotate(45deg);
+  top: 10px;
+  transition: top 0.2s linear;
+  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .5);
+  transition: all 0.5s linear;
+}
+
+.movies-nav__link_hidden {
+  display: none;
+}
+
+.movies-nav__link_active {
+  border-bottom: 2px solid #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .movies-nav {
+    position: fixed;
+    z-index: 10;
+    right: -68%;
+    bottom: 0;
+    width: 68%;
+    height: 100%;
+    flex-direction: column;
+    gap: 28px;
+    background: #202020;
+    transition: right .4s ease-in-out;
+    box-sizing: border-box;
+    padding-top: 160px;
+    padding-bottom: 90px;
+    padding-left: 0;
+    justify-content: flex-start;
+  }
+
+  .movies-nav_active {
+    right: 0;
+  }
+
+  .toggle-sidebar {
+    display: flex;
+  }
+
+  .profile-link {
+    margin-left: 0;
+    margin-top: auto;
+  }
+
+  .movies-nav__link_hidden {
+    display: block;
+  }
+
+  .movies-nav__link {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+}
+
+@media screen and (max-width: 460px) {
+  .main-nav {
+    gap: 14px;
+  }
+
+  .main-nav__link {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .nav__link_color_green {
+    padding: 5px 12px;
+  }
+
+  .movies-nav {
+    right: -100%;
+    width: 100%;
+    padding-top: 144px;
+    padding-bottom: 46px;
+  }
+
+  .movies-nav_active {
+    right: 0;
+  }
+
+  .toggle-sidebar_active {
+    top: 17px;
+    right: 13px;
+  }
+
+}

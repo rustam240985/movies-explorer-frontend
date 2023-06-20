@@ -1,0 +1,97 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  background: #2F2F2F;
+}
+
+.card__text {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.card__title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  margin-bottom: 13px;
+}
+
+.card__time {
+  display: block;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  color: #8B8B8B;
+  margin-bottom: 30px;
+}
+
+.card__poster {
+  display: block;
+  box-sizing: border-box;
+  width: 220px;
+  height: 134px;
+  object-fit: cover;
+  padding: 6px;
+}
+
+.card__save {
+  all: unset;
+  background: url('../../images/save.svg') 50%/contain no-repeat;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 12px;
+  width: 14px;
+  transition: opacity .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.card__save:hover {
+  opacity: 0.6;
+}
+
+.card__saved {
+  background: url('../../images/saved.svg') 50%/contain no-repeat;
+}
+
+.card__del {
+  all: unset;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 12px;
+  width: 14px;
+  transition: opacity .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: url('../../images/del.svg') 50%/contain no-repeat;
+}
+
+.card__del:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 460px) {
+  .card {
+    flex-direction: column-reverse;
+  }
+
+  .card__poster {
+    height: 168px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .card__text {
+    padding: 14px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .card__title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 8px;
+  }
+
+  .card__time {
+    margin-bottom: 0;
+  }
+}
