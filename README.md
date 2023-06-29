@@ -33,8 +33,8 @@ Cкрипт генерирует оптимизированную сборку �
 
 **Url сайта**
 
-* [Ссылка на сайт](http://rustamnigm.students.nomoredomains.rocks/)
+* [Ссылка на сайт](http://nigma2023.nomoreparties.sbs/)
 
 **Pull request**
 
-* [Ссылка на сайт](https://github.com/rustam240985/movies-explorer-frontend/pull/2)
+* [Ссылка](https://github.com/rustam240985/movies-explorer-frontend/pull/2)
