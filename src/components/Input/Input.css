@@ -24,3 +24,7 @@
 .input:focus {
   box-shadow: 0 0 5px 1px #00a8de;
 }
+
+.input__error {
+  color: #EE3465;
+}
