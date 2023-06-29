@@ -34,3 +34,7 @@ Cкрипт генерирует оптимизированную сборку �
 **Url сайта**
 
 * [Ссылка на сайт](http://rustamnigm.students.nomoredomains.rocks/)
+
+**Pull request**
+
+* [Ссылка на сайт](https://github.com/rustam240985/movies-explorer-frontend/pull/2)
