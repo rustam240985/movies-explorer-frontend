@@ -2,11 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import './MoviesCard.css';
 import { AppContext } from '../../contexts/AppContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { MINUTE_DIGIT, ONE_HOUR } from '../../utils/constants';
 
 function MoviesCard({ movie, apiUrl, savedMovies }) {
   const { handleDeleteSavedMovie, handleSaveDeleteMovie } = useContext(AppContext);
   const { email } = useContext(CurrentUserContext);
   const [isLikeMovie, setLikeMovie] = useState(false);
+
+  const hours = parseInt(movie.duration / ONE_HOUR);
+  const minutes = parseInt(movie.duration % ONE_HOUR);
+  const formatHours = hours === 0 ? '' : hours + 'ч';
+  const formatMinutes = minutes.toString().length < MINUTE_DIGIT ? '0' + minutes + 'м' : minutes + 'м';
 
   useEffect(() => {
     if (savedMovies) {
@@ -26,7 +32,6 @@ function MoviesCard({ movie, apiUrl, savedMovies }) {
   }
 
   function handleSaveDelMovie() {
-    setLikeMovie(prev => !prev);
     handleSaveDeleteMovie(movie);
   }
 
@@ -41,7 +46,7 @@ function MoviesCard({ movie, apiUrl, savedMovies }) {
       <div className="card__text">
         <div className="card__info">
           <h2 className="card__title">{movie.nameRU}</h2>
-          <span className="card__time">{movie.duration}</span>
+          <span className="card__time">{`${formatHours} ${formatMinutes}`}</span>
         </div>
         {cardBtn}
       </div>

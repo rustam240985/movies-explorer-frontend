@@ -2,30 +2,31 @@ import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
+import { AMOUNT_CARDS_DESKTOP, AMOUNT_CARDS_MOBILE, WIDTH_MOBILE } from '../../utils/constants';
 
-function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChecked }) {
+function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChecked, required }) {
 
-  const { values, errors, handleChange, isValid, setIsValid, setErrors, resetForm } = useFormAndValidation();
+  const { values, errors, handleChange, isValid, setIsValid, resetForm, setErrors } = useFormAndValidation();
 
   useEffect(() => {
-    resetForm({ ...values, entity: searchValue })
+    if (searchValue) {
+      resetForm({ ...values, entity: searchValue });
+      setIsValid(true);
+    }
   }, [])
 
   function handleSearchMovies(e) {
     e.preventDefault();
-    if (!values.entity) {
-      setIsValid(false);
-      setErrors({ ...errors, entity: true });
-      return;
-    }
     if (isValid) {
       onSearch(values.entity);
-      if (window.innerWidth < 461) {
-        setTotalShow(5);
+      if (window.innerWidth < WIDTH_MOBILE) {
+        setTotalShow(AMOUNT_CARDS_MOBILE);
       } else {
-        setTotalShow(7);
+        setTotalShow(AMOUNT_CARDS_DESKTOP);
       }
-
+    } else if (!values.entity && !isValid) {
+      setErrors({ ...errors, entity: true });
+      return;
     }
   }
 
@@ -40,10 +41,11 @@ function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChec
           type="text" placeholder="Фильм"
           name="entity"
           onChange={handleChange}
+          required={required}
         />
         <button className="search__btn" type="submit">Поиск</button>
       </form>
-      <FilterCheckbox onSearchShort={onSearchShort} isChecked={isChecked} />
+      <FilterCheckbox onSearchShort={onSearchShort} isChecked={isChecked} isValid={isValid} values={values} onSearch={onSearch} setTotalShow={setTotalShow} errors={errors} setErrors={setErrors} />
     </section>
   )
 }

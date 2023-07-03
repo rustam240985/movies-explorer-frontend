@@ -2,13 +2,11 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
-import { LOAD_ERROR } from '../../utils/constants';
-import { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AMOUNT_CARDS_DESKTOP, AMOUNT_CARDS_MOBILE, LOAD_ERROR, WIDTH_MOBILE } from '../../utils/constants';
+import { useEffect, useState } from 'react';
 
-function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, savedMovies, notFound, searchValue, isChecked }) {
-  const { error, errorSavedMovies } = useContext(AppContext);
-  const [totalShow, setTotalShow] = useState(7);
+function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, savedMovies, notFound, searchValue, isChecked, required, error }) {
+  const [totalShow, setTotalShow] = useState(AMOUNT_CARDS_DESKTOP);
 
   const showAllByDefault = cards.length <= totalShow;
   const cardsToShow = showAllByDefault
@@ -18,10 +16,10 @@ function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, saved
   useEffect(() => {
     const resize = (e) => {
       setTimeout(() => {
-        if (e.target.window.innerWidth < 461) {
-          setTotalShow(5);
+        if (e.target.window.innerWidth < WIDTH_MOBILE) {
+          setTotalShow(AMOUNT_CARDS_MOBILE);
         } else {
-          setTotalShow(7);
+          setTotalShow(AMOUNT_CARDS_DESKTOP);
         }
       }, 66)
     }
@@ -31,19 +29,19 @@ function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, saved
   }, [])
 
   useEffect(() => {
-    setTotalShow(7);
+    setTotalShow(AMOUNT_CARDS_DESKTOP);
   }, [])
 
   function handleShowAll() {
-    setTotalShow(val => val + 7);
+    setTotalShow(val => val + AMOUNT_CARDS_DESKTOP);
   }
 
   return (
     <>
-      <SearchForm onSearch={onSearch} onSearchShort={onSearchShort} setTotalShow={setTotalShow} searchValue={searchValue} isChecked={isChecked} />
+      <SearchForm onSearch={onSearch} onSearchShort={onSearchShort} setTotalShow={setTotalShow} searchValue={searchValue} isChecked={isChecked} required={required} />
       <section className="cards" aria-label="Список фильмов">
         {loading ? (<Preloader />) :
-          ((error || errorSavedMovies) && <span className="cards__error">{LOAD_ERROR}</span>) ||
+          (error && <span className="cards__error">{LOAD_ERROR}</span>) ||
           (notFound ? <span className="cards__not-found">Ничего не найдено</span> : '') ||
           (cardsToShow?.map((card) => (
             < MoviesCard key={card.id || card._id} movie={card} apiUrl={apiUrl} savedMovies={savedMovies} />

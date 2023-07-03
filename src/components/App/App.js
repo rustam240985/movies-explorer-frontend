@@ -23,6 +23,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [editProfileMessage, setEditProfileMessage] = useState({ error: '', success: '' });
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isFirstRequestMovie, setFirstRequestMovie] = useState(true);
+  const [notFoundMovies, setNotFoundMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   const moviesApi = new MoviesApi({
     baseUrl: MOVIE_API_URL,
@@ -41,23 +44,30 @@ function App() {
 
   const location = useLocation();
 
-
-  const { handleSetSearch: handleSetSearchMovie, handleSetShortSearch: handleSetShortSearchMovie, filteredMovies, loading, handleSetLoggedIn, notFound, error } = useMovies(moviesApi.getMovies);
-  const { handleSetSearch: handleSetSearchSavedMovie, handleSetShortSearch: handleSetShortSaved, initMovies: initMoviesSave, filteredMovies: filteredSavedMovies, handleSetLoggedIn: handleSetLoggedInSaved, handleAddMovie, handleDeleteMovie, loading: loadingSavedMovies, error: errorSavedMovies, notFound: notFoundSave } = useMovies(mainApi.getMovies);
+  const { handleLoadAllMovies, handleLoadLocalMovies, handleSetSearch: handleSetSearchMovie, handleSetShortSearch: handleSetShortSearchMovie, filteredMovies, loading, notFound, error } = useMovies(moviesApi.getMovies);
+  const { handleSetSearch: handleSetSearchSavedMovie, handleSetShortSearch: handleSetShortSaved, handleSetLoggedIn, initMovies: initMoviesSave, filteredMovies: filteredSavedMovies, handleAddMovie, handleDeleteMovie, loading: loadingSavedMovies, error: errorSavedMovies, notFound: notFoundSave } = useMovies(mainApi.getMovies);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    const localMovies = JSON.parse(localStorage.getItem('movies')) || [];
+    const localNotFound = JSON.parse(localStorage.getItem('not_found'))
     handleTokenCheck();
-    localStorage.removeItem('search-value-movie');
-    localStorage.removeItem('short-cheked-movie')
+    handleLoadLocalMovies(localMovies);
+    setNotFoundMovies(localNotFound);
   }, []);
 
   useEffect(() => {
     handleSetLoggedIn(loggedIn);
-    handleSetLoggedInSaved(loggedIn);
   }, [loggedIn]);
 
+  useEffect(() => {
+    if (!isFirstRequestMovie) {
+      setNotFoundMovies(notFound);
+      localStorage.setItem('not_found', notFound);
+    }
+
+  }, [filteredMovies]);
 
   useEffect(() => {
     loggedIn &&
@@ -91,8 +101,8 @@ function App() {
     auth.authorize(formValue.password, formValue.email)
       .then((data) => {
         if (data.token) {
-          setLoggedIn(true);
           localStorage.setItem('jwt', data.token);
+          setLoggedIn(true);
           return navigate('/movies', { replace: true });
         }
       })
@@ -133,6 +143,16 @@ function App() {
         setEditProfileMessage({ ...editProfileMessage, error: 'При сохранении профиля возникла ошибка!' });
         alert(`Ошибка обновления данных пользователя: ${err}`);
       })
+  }
+
+  function handleSearchMovies(value) {
+    if (isFirstRequestMovie) {
+      handleLoadAllMovies();
+      setFirstRequestMovie(false);
+      handleSetShortSearchMovie(JSON.parse(localStorage.getItem('short-cheked-movie')));
+    }
+
+    handleSetSearchMovie(value);
   }
 
   function handleDeleteSavedMovie(movie) {
@@ -178,15 +198,15 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{ error, errorSavedMovies, isErrorAuth, setErrorAuth, editProfileMessage, setEditProfileMessage, loggedIn, handleDeleteSavedMovie, handleSaveDeleteMovie, handleLogout }}>
+    <AppContext.Provider value={{ setMovies, isErrorAuth, setErrorAuth, editProfileMessage, setEditProfileMessage, loggedIn, handleDeleteSavedMovie, handleSaveDeleteMovie, handleLogout }}>
       <CurrentUserContext.Provider value={{ ...currentUser }}>
         <div className="page">
           <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/*" element={<Layout />}>
               <Route index element={<Main />} />
-              <Route path="movies" element={<ProtectedRouteElement element={Movies} movies={filteredMovies} onSearch={handleSetSearchMovie} savedMovies={initMoviesSave} onSearchShort={handleSetShortSearchMovie} apiUrl={MOVIE_API_URL} loading={loading} notFound={notFound} />} />
-              <Route path="saved-movies" element={<ProtectedRouteElement element={SavedMovies} movies={filteredSavedMovies} onSearch={handleSetSearchSavedMovie} onSearchShort={handleSetShortSaved} loading={loadingSavedMovies} notFound={notFoundSave} />} />
+              <Route path="movies" element={<ProtectedRouteElement element={Movies} movies={filteredMovies} onSearch={handleSearchMovies} savedMovies={initMoviesSave} onSearchShort={handleSetShortSearchMovie} apiUrl={MOVIE_API_URL} loading={loading} notFound={notFoundMovies} error={error} />} />
+              <Route path="saved-movies" element={<ProtectedRouteElement element={SavedMovies} movies={filteredSavedMovies} onSearch={handleSetSearchSavedMovie} onSearchShort={handleSetShortSaved} loading={loadingSavedMovies} notFound={notFoundSave} error={errorSavedMovies} />} />
               <Route path="profile" element={<Profile onUpdateProfile={handleUpdateProfile} />} />
             </Route>
             <Route path="/signup" element={<Register onRegister={handleRegister} />} />

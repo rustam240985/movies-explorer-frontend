@@ -5,10 +5,9 @@ import Input from "../Input/Input";
 
 function Login({ onLogin }) {
 
-  const { values, errors, handleChange, isValid, resetForm, setIsValid, setErrors } = useFormAndValidation();
+  const { values, errors, handleChange, isValid, resetForm } = useFormAndValidation();
 
   useEffect(() => {
-    console.log('login')
     resetForm();
   }, [])
 

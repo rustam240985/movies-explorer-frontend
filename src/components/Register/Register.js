@@ -2,13 +2,11 @@ import { useEffect } from "react";
 import { useFormAndValidation } from "../../utils/hooks/useFormAndValidation";
 import FormTemplate from "../FormTemplate/FormTemplate";
 import Input from "../Input/Input";
-import { PATTERN_NAME } from "../../utils/constants";
 
 function Register({ onRegister }) {
   const { values, errors, handleChange, isValid, resetForm, setErrors } = useFormAndValidation();
 
   useEffect(() => {
-    console.log('register')
     resetForm();
   }, [])
 

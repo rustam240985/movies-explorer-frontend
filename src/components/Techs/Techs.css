@@ -31,11 +31,14 @@
 
 .techs__nav-item {
   flex: 0 0 90px;
-  padding: 21px 0;
   font-size: 14px;
   line-height: 1.21;
   text-align: center;
   letter-spacing: -0.04em;
+}
+
+.techs__link {
+  padding: 21px 0;
 }
 
 @media screen and (max-width: 768px) {

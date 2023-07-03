@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './FilterCheckbox.css';
+import { AMOUNT_CARDS_DESKTOP, AMOUNT_CARDS_MOBILE, WIDTH_MOBILE } from '../../utils/constants';
 
-function FilterCheckbox({ onSearchShort, isChecked }) {
+function FilterCheckbox({ onSearchShort, isChecked, isValid, onSearch, values, errors, setTotalShow, setErrors }) {
 
   const [check, setCheck] = useState(false);
 
@@ -11,7 +12,14 @@ function FilterCheckbox({ onSearchShort, isChecked }) {
 
   function handleChange(e) {
     setCheck(e.target.checked);
-    onSearchShort(e.target.checked)
+    onSearchShort(e.target.checked);
+    if (window.innerWidth < WIDTH_MOBILE) {
+      setTotalShow(AMOUNT_CARDS_MOBILE);
+    } else {
+      setTotalShow(AMOUNT_CARDS_DESKTOP);
+    }
+
+
   }
 
   return (

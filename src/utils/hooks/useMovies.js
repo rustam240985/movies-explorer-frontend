@@ -11,29 +11,28 @@ export const useMovies = (fetchMovies) => {
   const [search, setSearch] = useState('');
   const [shortMovies, setShortMovies] = useState(false);
 
-  useEffect(() => {
-    const handleFetchMovies = async () => {
-      try {
-        const movies = await fetchMovies();
+  const handleFetchMovies = async () => {
+    try {
+      const movies = await fetchMovies();
 
-        setState(state => ({
-          ...state,
-          movies
-        }));
-      } catch (error) {
-        setState(state => ({
-          ...state,
-          error: error,
-        }));
-      } finally {
-        setState(state => ({
-          ...state,
-          loading: false,
-        }));
-      }
-    };
+      setState(state => ({
+        ...state,
+        movies
+      }));
+    } catch (error) {
+      setState(state => ({
+        ...state,
+        error: error,
+      }));
+    } finally {
+      setState(state => ({
+        ...state,
+        loading: false,
+      }));
+    }
+  };
 
-
+useEffect(() => {
     if (state.isLoggedIn) {
       setState({
         ...state,
@@ -79,12 +78,10 @@ export const useMovies = (fetchMovies) => {
       }
     }
 
-    console.log(result)
-
     return result;
   }, [search, shortMovies, state.movies])
 
-  const notFound = filteredMovies.length === 0;
+  const notFound = (search || shortMovies) && filteredMovies.length === 0;
 
   const handleSetSearch = useCallback((value) => {
     setSearch(value);
@@ -116,7 +113,22 @@ export const useMovies = (fetchMovies) => {
 
   }, []);
 
+  const handleLoadAllMovies = useCallback(() => {
+    setState({
+      ...state,
+      loading: true,
+    })
+    handleFetchMovies();
 
+  }, []);
+
+  const handleLoadLocalMovies = useCallback((movies) => {
+    setState(state => ({
+      ...state,
+      movies,
+    }))
+
+  }, []);
 
   return {
     initMovies: state.movies,
@@ -126,6 +138,8 @@ export const useMovies = (fetchMovies) => {
     handleSetLoggedIn,
     handleAddMovie,
     handleDeleteMovie,
+    handleLoadAllMovies,
+    handleLoadLocalMovies,
     filteredMovies,
     notFound,
     error: state.error

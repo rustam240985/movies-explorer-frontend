@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Navigation.css';
 
-import { NavLink, useLocation, useRoutes } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AppContext } from '../../contexts/AppContext';
 
 function Navigation() {
@@ -13,6 +13,7 @@ function Navigation() {
 
   const setActive = ({ isActive }) => ({
     borderBottom: isActiveSidebar && isActive ? '2px solid #fff' : '',
+    fontWeight: isActive ? '500' : '400',
   });
 
 

@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
 
-function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound }) {
+function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound, error }) {
 
   useEffect(() => {
     onSearch('');
@@ -13,19 +13,17 @@ function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound }) {
   }, [])
 
   function handleSearch(value) {
-    localStorage.setItem('search-value-saved-movie', JSON.stringify(value));
-    onSearch(value)
+    onSearch(value);
   }
 
   function handleSearchShort(check) {
-    localStorage.setItem('short-cheked-saved-movie', JSON.stringify(check));
-    onSearchShort(check)
+    onSearchShort(check);
   }
 
   return (
     <>
       <main className="main container">
-        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} loading={loading} notFound={notFound} />
+        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} loading={loading} notFound={notFound} required={false} error={error} />
       </main>
       <Footer />
     </>
