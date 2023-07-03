@@ -3,9 +3,12 @@ import './Movies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import { MOVIE_API_URL } from '../../utils/constants';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../../contexts/AppContext';
 
 function Movies({ movies, onSearch, onSearchShort, loading, savedMovies, notFound, error }) {
+
+  const { searchLocalValue, isChecked } = useContext(AppContext);
 
   useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(movies));
@@ -17,14 +20,14 @@ function Movies({ movies, onSearch, onSearchShort, loading, savedMovies, notFoun
   }
 
   function handleSearchShort(check) {
-    localStorage.setItem('short-cheked-movie', check);
+    localStorage.setItem('short-checked-movie', check);
     onSearchShort(check);
   }
 
   return (
     <>
       <main className="main movies">
-        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} apiUrl={MOVIE_API_URL} loading={loading} savedMovies={savedMovies} notFound={notFound} error={error} searchValue={localStorage.getItem('search-value-movie')} isChecked={JSON.parse(localStorage.getItem('short-cheked-movie'))} required={true} />
+        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} apiUrl={MOVIE_API_URL} loading={loading} savedMovies={savedMovies} notFound={notFound} error={error} searchValue={searchLocalValue} isChecked={isChecked} required={true} />
       </main>
       <Footer />
     </>

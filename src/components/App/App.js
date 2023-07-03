@@ -25,7 +25,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isFirstRequestMovie, setFirstRequestMovie] = useState(true);
   const [notFoundMovies, setNotFoundMovies] = useState([]);
-  const [movies, setMovies] = useState([]);
+  const [searchLocalValue, setSearchLocalValue] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
 
   const moviesApi = new MoviesApi({
     baseUrl: MOVIE_API_URL,
@@ -51,7 +52,11 @@ function App() {
 
   useEffect(() => {
     const localMovies = JSON.parse(localStorage.getItem('movies')) || [];
-    const localNotFound = JSON.parse(localStorage.getItem('not_found'))
+    const localNotFound = JSON.parse(localStorage.getItem('not_found'));
+    const seacrhValue = localStorage.getItem('search-value-movie');
+    const isCheck = JSON.parse(localStorage.getItem('short-checked-movie'));
+    setSearchLocalValue(seacrhValue);
+    setIsChecked(isCheck)
     handleTokenCheck();
     handleLoadLocalMovies(localMovies);
     setNotFoundMovies(localNotFound);
@@ -149,7 +154,6 @@ function App() {
     if (isFirstRequestMovie) {
       handleLoadAllMovies();
       setFirstRequestMovie(false);
-      handleSetShortSearchMovie(JSON.parse(localStorage.getItem('short-cheked-movie')));
     }
 
     handleSetSearchMovie(value);
@@ -198,7 +202,7 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{ setMovies, isErrorAuth, setErrorAuth, editProfileMessage, setEditProfileMessage, loggedIn, handleDeleteSavedMovie, handleSaveDeleteMovie, handleLogout }}>
+    <AppContext.Provider value={{ searchLocalValue, isChecked, isErrorAuth, setErrorAuth, editProfileMessage, setEditProfileMessage, loggedIn, handleDeleteSavedMovie, handleSaveDeleteMovie, handleLogout }}>
       <CurrentUserContext.Provider value={{ ...currentUser }}>
         <div className="page">
           <Routes>

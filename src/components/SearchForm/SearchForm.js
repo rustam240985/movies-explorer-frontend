@@ -34,7 +34,7 @@ function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChec
   return (
     <section className="search" aria-label="Поиск фильма">
       <form className="search__form" onSubmit={handleSearchMovies} name="search" noValidate>
-        <span className={`search__error ${errors.entity ? 'search__error_active' : ''}`}>Нужно ввести ключевое слово</span>
+        <span className={`search__error ${!isValid ? 'search__error_active' : ''}`}>Нужно ввести ключевое слово</span>
         <input
           value={values.entity || ''}
           className="search__input"
