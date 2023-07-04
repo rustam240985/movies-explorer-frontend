@@ -13,7 +13,8 @@ function Navigation() {
 
   const setActive = ({ isActive }) => ({
     borderBottom: isActiveSidebar && isActive ? '2px solid #fff' : '',
-    fontWeight: isActive ? '500' : '400',
+    fontWeight: isActive ? '500' : '',
+    opacity: isActive ? '0.6' : ''
   });
 
 

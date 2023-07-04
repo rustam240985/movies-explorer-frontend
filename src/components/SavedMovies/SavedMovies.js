@@ -4,7 +4,6 @@ import './SavedMovies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-
 function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound, error }) {
 
   useEffect(() => {

@@ -32,7 +32,7 @@ export const useMovies = (fetchMovies) => {
     }
   };
 
-useEffect(() => {
+  useEffect(() => {
     if (state.isLoggedIn) {
       setState({
         ...state,
