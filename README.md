@@ -31,8 +31,10 @@ Cкрипт генерирует оптимизированную сборку �
 
 * [Ссылка на макет](https://disk.yandex.ru/d/4IuXN7O8W558KA)
 
-
-
 **Url сайта**
 
-* [Ссылка на сайт](http://rustamnigm.students.nomoredomains.rocks/)
+* [Ссылка на сайт](http://nigma2023.nomoreparties.sbs/)
+
+**Pull request**
+
+* [Ссылка](https://github.com/rustam240985/movies-explorer-frontend/pull/2)

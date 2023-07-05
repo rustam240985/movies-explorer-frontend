@@ -25,6 +25,18 @@
   outline: none;
 }
 
+.search__error {
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  color: #a14c4f;
+  display: none;
+}
+
+.search__error_active {
+  display: block;
+}
+
 .search__input:focus {
   box-shadow: 0 0 5px 1px #00a8de;
 }

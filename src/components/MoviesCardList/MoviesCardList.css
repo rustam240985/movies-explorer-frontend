@@ -6,6 +6,16 @@
   gap: 40px;
 }
 
+.cards__not-found {
+  text-align: center;
+}
+
+.cards__error {
+  text-align: center;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
 .more-btn {
   all: unset;
   cursor: pointer;
@@ -23,6 +33,10 @@
 .more-btn_align {
   margin-inline: auto;
   margin-bottom: 80px;
+}
+
+.more-btn_hidden {
+  display: none;
 }
 
 @media screen and (max-width: 460px) {

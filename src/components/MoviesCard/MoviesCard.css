@@ -2,6 +2,22 @@
   display: flex;
   justify-content: space-between;
   background: #2F2F2F;
+  position: relative;
+}
+
+.card__link {
+  all: unset;
+  font-size: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+.card_hidden {
+  display: none;
 }
 
 .card__text {
@@ -31,36 +47,34 @@
   box-sizing: border-box;
   width: 220px;
   height: 134px;
-  object-fit: cover;
+  object-fit: contain;
   padding: 6px;
 }
 
-.card__save {
+.card__btn {
   all: unset;
-  background: url('../../images/save.svg') 50%/contain no-repeat;
   cursor: pointer;
   flex-shrink: 0;
   height: 12px;
   width: 14px;
   transition: opacity .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 10;
+}
+
+.card__btn_action_save {
+  background: url('../../images/save.svg') 50%/contain no-repeat;
+}
+
+.card__btn_action_del {
+  background: url('../../images/del.svg') 50%/contain no-repeat;
+}
+
+.card__btn_active {
+  background: url('../../images/saved.svg') 50%/contain no-repeat;
 }
 
 .card__save:hover {
   opacity: 0.6;
-}
-
-.card__saved {
-  background: url('../../images/saved.svg') 50%/contain no-repeat;
-}
-
-.card__del {
-  all: unset;
-  cursor: pointer;
-  flex-shrink: 0;
-  height: 12px;
-  width: 14px;
-  transition: opacity .4s cubic-bezier(0.075, 0.82, 0.165, 1);
-  background: url('../../images/del.svg') 50%/contain no-repeat;
 }
 
 .card__del:hover {
