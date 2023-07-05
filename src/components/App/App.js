@@ -209,8 +209,8 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/*" element={<Layout />}>
               <Route index element={<Main />} />
-              <Route path="movies" element={<ProtectedRouteElement element={Movies} movies={filteredMovies} onSearch={handleSearchMovies} savedMovies={initMoviesSave} onSearchShort={handleSetShortSearchMovie} apiUrl={MOVIE_API_URL} loading={loading} notFound={notFoundMovies} error={error} />} />
-              <Route path="saved-movies" element={<ProtectedRouteElement element={SavedMovies} movies={filteredSavedMovies} onSearch={handleSetSearchSavedMovie} onSearchShort={handleSetShortSaved} loading={loadingSavedMovies} notFound={notFoundSave} error={errorSavedMovies} />} />
+              <Route path="movies" element={<ProtectedRouteElement element={Movies} movies={filteredMovies} onSearch={handleSearchMovies} savedMovies={initMoviesSave} onSearchShort={handleSetShortSearchMovie} apiUrl={MOVIE_API_URL} loading={loading} notFound={notFoundMovies} error={error} isValidation={true} />} />
+              <Route path="saved-movies" element={<ProtectedRouteElement element={SavedMovies} movies={filteredSavedMovies} onSearch={handleSetSearchSavedMovie} onSearchShort={handleSetShortSaved} loading={loadingSavedMovies} notFound={notFoundSave} error={errorSavedMovies} isValidation={false} />} />
               <Route path="profile" element={<Profile onUpdateProfile={handleUpdateProfile} />} />
             </Route>
             <Route path="/signup" element={<Register onRegister={handleRegister} />} />

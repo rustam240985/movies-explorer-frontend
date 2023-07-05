@@ -5,7 +5,7 @@ import Preloader from '../Preloader/Preloader';
 import { AMOUNT_CARDS_DESKTOP, AMOUNT_CARDS_MOBILE, LOAD_ERROR, WIDTH_MOBILE } from '../../utils/constants';
 import { useEffect, useState } from 'react';
 
-function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, savedMovies, notFound, searchValue, isChecked, required, error }) {
+function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, savedMovies, notFound, searchValue, isChecked, required, error, isValidation }) {
   const [totalShow, setTotalShow] = useState(AMOUNT_CARDS_DESKTOP);
 
   const showAllByDefault = cards.length <= totalShow;
@@ -38,7 +38,7 @@ function MoviesCardList({ cards, onSearch, onSearchShort, apiUrl, loading, saved
 
   return (
     <>
-      <SearchForm onSearch={onSearch} onSearchShort={onSearchShort} setTotalShow={setTotalShow} searchValue={searchValue} isChecked={isChecked} required={required} />
+      <SearchForm onSearch={onSearch} onSearchShort={onSearchShort} setTotalShow={setTotalShow} searchValue={searchValue} isChecked={isChecked} required={required} isValidation={isValidation} />
       <section className="cards" aria-label="Список фильмов">
         {loading ? (<Preloader />) :
           (error && <span className="cards__error">{LOAD_ERROR}</span>) ||

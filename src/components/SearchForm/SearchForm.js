@@ -4,7 +4,7 @@ import { useFormAndValidation } from '../../utils/hooks/useFormAndValidation';
 import { useEffect } from 'react';
 import { AMOUNT_CARDS_DESKTOP, AMOUNT_CARDS_MOBILE, WIDTH_MOBILE } from '../../utils/constants';
 
-function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChecked, required }) {
+function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChecked, required, isValidation }) {
 
   const { values, errors, handleChange, isValid, setIsValid, resetForm, setErrors } = useFormAndValidation();
 
@@ -15,8 +15,14 @@ function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChec
     }
   }, [])
 
+
   function handleSearchMovies(e) {
     e.preventDefault();
+    if (!values.entity && isValidation) {
+      setIsValid(false);
+      setErrors({ ...errors, entity: true });
+      return;
+    }
     if (isValid) {
       onSearch(values.entity);
       if (window.innerWidth < WIDTH_MOBILE) {
@@ -24,10 +30,8 @@ function SearchForm({ onSearch, onSearchShort, setTotalShow, searchValue, isChec
       } else {
         setTotalShow(AMOUNT_CARDS_DESKTOP);
       }
-    } else if (!values.entity && !isValid) {
-      setErrors({ ...errors, entity: true });
-      return;
     }
+
   }
 
 

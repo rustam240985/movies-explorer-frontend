@@ -4,7 +4,7 @@ import './SavedMovies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound, error }) {
+function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound, error, isValidation }) {
 
   useEffect(() => {
     onSearch('');
@@ -22,7 +22,7 @@ function SavedMovies({ movies, onSearch, onSearchShort, loading, notFound, error
   return (
     <>
       <main className="main container">
-        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} loading={loading} notFound={notFound} required={false} error={error} />
+        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} loading={loading} notFound={notFound} required={false} error={error} isValidation={isValidation} />
       </main>
       <Footer />
     </>

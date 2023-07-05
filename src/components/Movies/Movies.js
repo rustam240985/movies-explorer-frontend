@@ -6,7 +6,7 @@ import { MOVIE_API_URL } from '../../utils/constants';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 
-function Movies({ movies, onSearch, onSearchShort, loading, savedMovies, notFound, error }) {
+function Movies({ movies, onSearch, onSearchShort, loading, savedMovies, notFound, error, isValidation }) {
 
   const { searchLocalValue, isChecked } = useContext(AppContext);
 
@@ -27,7 +27,7 @@ function Movies({ movies, onSearch, onSearchShort, loading, savedMovies, notFoun
   return (
     <>
       <main className="main movies">
-        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} apiUrl={MOVIE_API_URL} loading={loading} savedMovies={savedMovies} notFound={notFound} error={error} searchValue={searchLocalValue} isChecked={isChecked} required={true} />
+        <MoviesCardList cards={movies} onSearch={handleSearch} onSearchShort={handleSearchShort} apiUrl={MOVIE_API_URL} loading={loading} savedMovies={savedMovies} notFound={notFound} error={error} searchValue={searchLocalValue} isChecked={isChecked} required={true} isValidation={isValidation} />
       </main>
       <Footer />
     </>
